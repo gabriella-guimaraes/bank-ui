@@ -1,0 +1,16 @@
+.logo {
+    max-width: 100px;
+}
+
+.container {
+    width: 100%;
+    /* height: 14vh; */
+    padding: 2.5rem;
+    border-bottom: 1px solid var(--gray);
+}
+
+.menuItem:hover {
+    color: var(--text-primary);
+    transform: scale(1.1);
+    transition: 0.5s;
+}
