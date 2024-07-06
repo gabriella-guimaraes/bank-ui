@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button, ButtonGroup, Grid, Link, Grow, Drawer, List, ListItem, ListItemText } from "@mui/material";
+import { Button, ButtonGroup, Grid, Link, Grow, Drawer, List, ListItem, ListItemText, Box, IconButton } from "@mui/material";
 import BankIcon from "../icons/logo";
 import MobileMenu from "../icons/mobileMenu";
 import SearchIcon from "../icons/search";
@@ -9,6 +9,7 @@ import menu_icon from "../../assets/menu-icon.png";
 import styles from "./NavBar.module.css";
 import Image from "next/image";
 import ServiceOptions from "../serviceOptions/ServiceOptions";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 function NavBar() {
   // Exibe o modal de opções de acordo com o Link
@@ -19,6 +20,19 @@ function NavBar() {
   // Exibe o menu mobile (tablet e smartphone)
   const [mobile, setMobile] = useState(false);
   const toggleMenu = () => setMobile(!mobile);
+
+  // Controle da renderização de ServiceOptions para mobile de acordo com o item selecionado no Drawer
+  const [selectedMenuItem, setSelectedMenuItem] = useState(null);
+  const handleDrawerItemClick = (item) => {
+    if (typeof item !== "string") {
+      setSelectedMenuItem(item);
+    }
+    // toggleMenu();
+  };
+
+  const handleBackClick = () => {
+    setSelectedMenuItem(null);
+  };
 
   const menuItems = [
     { name: "Pessoa Física", services: ["Serviço 1", "Serviço 2", "Serviço 3"] },
@@ -105,7 +119,7 @@ function NavBar() {
       </nav>
 
       {currentMenuItem && (
-        <div style={{ marginTop: '120px' }}> {/* Adicione uma margem superior para compensar a altura da NavBar */}
+        <div style={{ marginTop: '120px' }}>
           <ServiceOptions
             linkName={currentMenuItem.name}
             services={currentMenuItem.services}
@@ -126,14 +140,26 @@ function NavBar() {
           },
         }}
       >
-        <List className={styles.drawerList}>
-          {menuItems.map((item, index) => (
-            <ListItem key={index} onClick={toggleMenu}>
-              <ListItemText className={styles.drawerLinks} primary={typeof item === "string" ? item : item.name} />
-              {/* As opções de serviço podem aparecer aqui também */}
-            </ListItem>
-          ))}
-        </List>
+        {selectedMenuItem ? (
+          <Box>
+            <IconButton onClick={handleBackClick}>
+              <ArrowBackIcon style={{ color: "#E5E9F0" }} />
+            </IconButton>
+            <ServiceOptions
+              linkName={selectedMenuItem.name}
+              services={selectedMenuItem.services}
+              show={true}
+            />
+          </Box>
+        ) : (
+          <List className={styles.drawerList}>
+            {menuItems.map((item, index) => (
+              <ListItem key={index} onClick={() => handleDrawerItemClick(item)}>
+                <ListItemText className={styles.drawerLinks} primary={typeof item === "string" ? item : item.name} />
+              </ListItem>
+            ))}
+          </List>
+        )}
       </Drawer>
     </>
   );
