@@ -21,8 +21,8 @@
 
 .options {
   visibility: visible;
-  position: relative;
-  top: 0;
+  position: fixed;
+  top: 80px;
   left: 0;
   width: 100%;
   background-color: var(--bg-darkest);

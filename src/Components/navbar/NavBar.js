@@ -119,7 +119,7 @@ function NavBar() {
       </nav>
 
       {currentMenuItem && (
-        <div style={{ marginTop: '120px' }}>
+        <div className={styles.options}>
           <ServiceOptions
             linkName={currentMenuItem.name}
             services={currentMenuItem.services}
