@@ -1,0 +1,15 @@
+.options {
+  padding: 16px;
+  background-color: var(--bg-darkest);
+  border-bottom: 1px solid var(--gray);
+  margin-top: 8px;
+}
+
+.options ul {
+  list-style: none;
+  padding: 0;
+}
+
+.options ul li {
+  padding: 8px 0;
+}

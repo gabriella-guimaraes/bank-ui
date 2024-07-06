@@ -8,6 +8,7 @@ import SearchIcon from "../icons/search";
 import menu_icon from "../../assets/menu-icon.png";
 import styles from "./NavBar.module.css";
 import Image from "next/image";
+import ServiceOptions from "../serviceOptions/ServiceOptions";
 
 function NavBar() {
   // Exibe o modal de opções de acordo com o Link
@@ -20,13 +21,16 @@ function NavBar() {
   const toggleMenu = () => setMobile(!mobile);
 
   const menuItems = [
-    "Pessoa Física",
-    "PJ e MEI",
+    { name: "Pessoa Física", services: ["Serviço 1", "Serviço 2", "Serviço 3"] },
+    { name: "PJ e MEI", services: ["Serviço A", "Serviço B", "Serviço C"] },
     "Experiência C6 Carbon",
     "C6 Conta Global",
     "Ajuda",
     "Blog",
   ];
+
+  //garante com que apenas uma instância de opções de serviço seja exibida de cada vez
+  const currentMenuItem = menuItems.find(item => typeof item !== "string" && item.name === showOptions);
 
   return (
     <>
@@ -44,7 +48,6 @@ function NavBar() {
             </div>
           </Grid>
 
-          {/* Menu Links */}
           <Grid item xs={2} md={7} className={styles.links}>
             <div className={mobile ? "" : styles.hideMobileMenu}>
               <Grid
@@ -53,22 +56,34 @@ function NavBar() {
                 alignItems="center"
               >
                 {menuItems.map((item, index) => (
-                  <Link
-                    key={index}
-                    underline="none"
-                    href="#"
-                    className={styles.menuItem}
-                    onMouseEnter={() => handleMouseEnter(item)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    {item}
-                  </Link>
+                  typeof item === "string" ? (
+                    <Link
+                      key={index}
+                      underline="none"
+                      href="#"
+                      className={styles.menuItem}
+                      onMouseEnter={() => handleMouseEnter(item)}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      {item}
+                    </Link>
+                  ) : (
+                    <Link
+                      key={index}
+                      underline="none"
+                      href="#"
+                      className={styles.menuItem}
+                      onMouseEnter={() => handleMouseEnter(item.name)}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      {item.name}
+                    </Link>
+                  )
                 ))}
               </Grid>
             </div>
           </Grid>
 
-          {/* buttons */}
           <Grid item xs={8} md={3}>
             <Grid container justifyContent="flex-end" alignItems="center">
               <ButtonGroup size="small" aria-label="Small button group">
@@ -81,7 +96,6 @@ function NavBar() {
                   onClick={toggleMenu}
                   className={styles.menuIcon}
                 >
-                  {/* <MobileMenu /> */}
                   <Image src={menu_icon} className={styles.menuIcon} alt="mobile menu icon"/>
                 </Button>
               </ButtonGroup>
@@ -90,20 +104,16 @@ function NavBar() {
         </Grid>
       </nav>
 
-      {/* Options Divs */}
-      <Grow in={showOptions === "Pessoa Física"} timeout={500}>
-        <div className={styles.options}>
-          <p>Texto para Pessoa Física</p>
+      {currentMenuItem && (
+        <div style={{ marginTop: '120px' }}> {/* Adicione uma margem superior para compensar a altura da NavBar */}
+          <ServiceOptions
+            linkName={currentMenuItem.name}
+            services={currentMenuItem.services}
+            show={showOptions === currentMenuItem.name}
+          />
         </div>
-      </Grow>
+      )}
 
-      <Grow in={showOptions === "PJ e MEI"} timeout={500}>
-        <div className={styles.options}>
-          <p>Texto para PJ e MEI</p>
-        </div>
-      </Grow>
-
-      {/* Mobile Drawer Menu */}
       <Drawer
         anchor="top"
         open={mobile}
@@ -112,14 +122,15 @@ function NavBar() {
           "& .MuiDrawer-paper": {
             backgroundColor: "#0b0e13",
             color: "#E5E9F0",
-            top: "14%"
+            top: "19%"
           },
         }}
       >
         <List className={styles.drawerList}>
           {menuItems.map((item, index) => (
             <ListItem key={index} onClick={toggleMenu}>
-              <ListItemText className={styles.drawerLinks} primary={item} />
+              <ListItemText className={styles.drawerLinks} primary={typeof item === "string" ? item : item.name} />
+              {/* As opções de serviço podem aparecer aqui também */}
             </ListItem>
           ))}
         </List>
