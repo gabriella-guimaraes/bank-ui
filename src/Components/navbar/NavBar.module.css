@@ -1,0 +1,81 @@
+.logo {
+  max-width: 100px;
+}
+
+.container {
+  width: 100%;
+  padding: 2.5rem;
+  border-bottom: 1px solid var(--gray);
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--bg-darkest);
+  z-index: 10;
+}
+
+.menuItem:hover {
+  color: var(--text-primary);
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
+.options {
+  visibility: visible;
+  position: absolute;
+  top: 22%;
+  left: 0;
+  width: 100%;
+  background-color: var(--bg-darkest);
+  padding: 10px;
+  z-index: 9;
+  height: fit-content;
+  opacity: 0;
+  transition: opacity 1.7s ease-in-out, visibility 1.7s ease-in-out;
+}
+
+.menuIcon {
+  display: none;
+  width: 30px;
+  height: auto;
+}
+
+.account {
+  border: 15px;
+}
+
+@media (max-width: 1024px) {
+  .logo {
+    max-width: 80px;
+  }
+
+  .links {
+    display: none;
+  }
+
+  .drawerLinks {
+    cursor: pointer;
+  }
+
+  .menuIcon {
+    display: block;
+    width: 28px;
+    cursor: pointer;
+  }
+
+  .searchBtn {
+    display: none;
+  }
+
+  .hideMobileMenu{
+    right: -200px;
+  }
+
+  .drawerList {
+    width: 250px;
+  }
+  
+  .mobileDrawer {
+      background-color: var(--bg-darkest);
+  }
+}
+
