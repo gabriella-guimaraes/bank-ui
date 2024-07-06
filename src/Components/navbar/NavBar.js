@@ -112,7 +112,7 @@ function NavBar() {
           "& .MuiDrawer-paper": {
             backgroundColor: "#0b0e13",
             color: "#E5E9F0",
-            top: "19%"
+            top: "14%"
           },
         }}
       >
@@ -130,4 +130,5 @@ function NavBar() {
 
 export default NavBar;
 
-//TODO: Criar o accordion para as opções Pessoa Física e PJ
+//TODO: Criar o accordion para as opções Pessoa Física e PJ (mobile)
+//TODO: Criar um componente apartando para as opções de Pessoa Física e PJ -> Não esquecer da responsividade!!
