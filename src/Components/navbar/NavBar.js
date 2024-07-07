@@ -72,10 +72,9 @@ function NavBar() {
   // Controle da renderização de ServiceOptions para mobile de acordo com o item selecionado no Drawer
   const [selectedMenuItem, setSelectedMenuItem] = useState(null);
   const handleDrawerItemClick = (item) => {
-    if (typeof item !== "string") {
+    if (serviceData[item]) {
       setSelectedMenuItem(item);
     }
-    // toggleMenu();
   };
 
   const handleBackClick = () => {
@@ -164,7 +163,7 @@ function NavBar() {
         </div>
       )}
 
-      <Drawer
+<Drawer
         anchor="top"
         open={mobile}
         onClose={toggleMenu}

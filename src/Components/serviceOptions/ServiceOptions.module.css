@@ -12,4 +12,13 @@
 
 .options ul li {
   padding: 8px 0;
+  cursor: pointer;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  color: var(--primary);
 }
