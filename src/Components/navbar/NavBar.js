@@ -196,7 +196,7 @@ function NavBar() {
         </div>
       )}
 
-      <Drawer
+<Drawer
         anchor="top"
         open={mobile}
         onClose={toggleMenu}
