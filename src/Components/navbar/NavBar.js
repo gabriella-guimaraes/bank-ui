@@ -11,10 +11,58 @@ import Image from "next/image";
 import ServiceOptions from "../serviceOptions/ServiceOptions";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
+// Estrutura de dados para os links
+const serviceData = {
+  "Pessoa Física": {
+    categories: [
+      "Empréstimos e Financiamento",
+      "Cartões",
+      "Conta",
+      "C6 Conta Global",
+      "C6 Invest",
+      "Pontos e Benefícios",
+      "Seguros e Planos",
+      "Facilidades",
+      "Mais"
+    ],
+    quickAccess: [
+      "Renegociação de dívidas",
+      "Cartão de Crédito",
+      "C6 Conta Global",
+      "C6 Invest",
+      "NOVO"
+    ],
+    securityPortal: [
+      "Quem somos"
+    ]
+  },
+  "PJ e MEI": {
+    categories: [
+      "Serviço A",
+      "Serviço B",
+      "Serviço C",
+    ],
+    quickAccess: [
+      "Serviço D",
+      "Serviço E",
+      "Serviço F",
+    ],
+    securityPortal: [
+      "Quem somos"
+    ]
+  }
+};
+
 function NavBar() {
   // Exibe o modal de opções de acordo com o Link
   const [showOptions, setShowOptions] = useState(null);
-  const handleMouseEnter = (link) => setShowOptions(link);
+  const handleMouseEnter = (link) => {
+    if (serviceData[link]) {
+      setShowOptions(link);
+    } else {
+      setShowOptions(null);
+    }
+  };
   const handleMouseLeave = () => setShowOptions(null);
 
   // Exibe o menu mobile (tablet e smartphone)
@@ -35,16 +83,17 @@ function NavBar() {
   };
 
   const menuItems = [
-    { name: "Pessoa Física", services: ["Serviço 1", "Serviço 2", "Serviço 3"] },
-    { name: "PJ e MEI", services: ["Serviço A", "Serviço B", "Serviço C"] },
+    "Pessoa Física",
+    "PJ e MEI",
     "Experiência C6 Carbon",
     "C6 Conta Global",
     "Ajuda",
     "Blog",
-  ];
+  ]
 
   //garante com que apenas uma instância de opções de serviço seja exibida de cada vez
-  const currentMenuItem = menuItems.find(item => typeof item !== "string" && item.name === showOptions);
+  // const currentMenuItem = menuItems.find(item => typeof item !== "string" && item.name === showOptions);
+  const currentMenuItem = menuItems.find(item => item === showOptions);
 
   return (
     <>
@@ -70,29 +119,16 @@ function NavBar() {
                 alignItems="center"
               >
                 {menuItems.map((item, index) => (
-                  typeof item === "string" ? (
-                    <Link
-                      key={index}
-                      underline="none"
-                      href="#"
-                      className={styles.menuItem}
-                      onMouseEnter={() => handleMouseEnter(item)}
-                      onMouseLeave={handleMouseLeave}
-                    >
-                      {item}
-                    </Link>
-                  ) : (
-                    <Link
-                      key={index}
-                      underline="none"
-                      href="#"
-                      className={styles.menuItem}
-                      onMouseEnter={() => handleMouseEnter(item.name)}
-                      onMouseLeave={handleMouseLeave}
-                    >
-                      {item.name}
-                    </Link>
-                  )
+                  <Link
+                    key={index}
+                    underline="none"
+                    href="#"
+                    className={styles.menuItem}
+                    onMouseEnter={() => handleMouseEnter(item)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    {item}
+                  </Link>
                 ))}
               </Grid>
             </div>
@@ -118,12 +154,12 @@ function NavBar() {
         </Grid>
       </nav>
 
-      {currentMenuItem && (
-        <div className={styles.options}>
+      {currentMenuItem && serviceData[currentMenuItem] && (
+        <div className={styles.optionsContainer}>
           <ServiceOptions
-            linkName={currentMenuItem.name}
-            services={currentMenuItem.services}
-            show={showOptions === currentMenuItem.name}
+            linkName={currentMenuItem}
+            services={serviceData[currentMenuItem]}
+            show={showOptions === currentMenuItem}
           />
         </div>
       )}
@@ -146,8 +182,8 @@ function NavBar() {
               <ArrowBackIcon style={{ color: "#E5E9F0" }} />
             </IconButton>
             <ServiceOptions
-              linkName={selectedMenuItem.name}
-              services={selectedMenuItem.services}
+              linkName={selectedMenuItem}
+              services={serviceData[selectedMenuItem]}
               show={true}
             />
           </Box>
@@ -155,7 +191,7 @@ function NavBar() {
           <List className={styles.drawerList}>
             {menuItems.map((item, index) => (
               <ListItem key={index} onClick={() => handleDrawerItemClick(item)}>
-                <ListItemText className={styles.drawerLinks} primary={typeof item === "string" ? item : item.name} />
+                <ListItemText className={styles.drawerLinks} primary={item} />
               </ListItem>
             ))}
           </List>
