@@ -1,7 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
-import { Button, ButtonGroup, Grid, Link, Grow, Drawer, List, ListItem, ListItemText, Box, IconButton } from "@mui/material";
+import React, { useState, useEffect, useRef } from "react";
+import {
+  Button,
+  ButtonGroup,
+  Grid,
+  Link,
+  Grow,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  Box,
+  IconButton,
+} from "@mui/material";
 import BankIcon from "../icons/logo";
 import MobileMenu from "../icons/mobileMenu";
 import SearchIcon from "../icons/search";
@@ -23,39 +35,46 @@ const serviceData = {
       "Pontos e Benefícios",
       "Seguros e Planos",
       "Facilidades",
-      "Mais"
+      "Mais",
     ],
     quickAccess: [
       "Renegociação de dívidas",
       "Cartão de Crédito",
       "C6 Conta Global",
       "C6 Invest",
-      "NOVO"
+      "NOVO",
     ],
-    securityPortal: [
-      "Quem somos"
-    ]
+    securityPortal: ["Quem somos"],
   },
   "PJ e MEI": {
     categories: [
-      "Serviço A",
-      "Serviço B",
-      "Serviço C",
+      "Conta",
+      "Recebimentos",
+      "Crédito",
+      "Investimentos",
+      "Seguros e Planos",
+      "Facilidades e Benefícios",
+      "Mais",
     ],
     quickAccess: [
-      "Serviço D",
-      "Serviço E",
-      "Serviço F",
+      "Maquininha de cartão - PJ e MEI",
+      "Conta PJ",
+      "Web Banking  - PJ",
     ],
     securityPortal: [
-      "Quem somos"
-    ]
-  }
+      "Cartão C6 Business - PJ e MEI",
+      "Conta MEI Digital - MEI",
+      "Conta C¨GLobal Empresas - PJ"
+    ],
+  },
 };
 
 function NavBar() {
-  // Exibe o modal de opções de acordo com o Link
   const [showOptions, setShowOptions] = useState(null);
+  const [hoveringOptions, setHoveringOptions] = useState(false);
+  const [mobile, setMobile] = useState(false);
+  const [selectedMenuItem, setSelectedMenuItem] = useState(null);
+
   const handleMouseEnter = (link) => {
     if (serviceData[link]) {
       setShowOptions(link);
@@ -63,14 +82,26 @@ function NavBar() {
       setShowOptions(null);
     }
   };
-  const handleMouseLeave = () => setShowOptions(null);
 
-  // Exibe o menu mobile (tablet e smartphone)
-  const [mobile, setMobile] = useState(false);
+  const handleMouseLeave = () => {
+    setTimeout(() => {
+      if (!hoveringOptions) {
+        setShowOptions(null);
+      }
+    }, 500); // Pequeno atraso para permitir a transição suave
+  };
+
+  const handleOptionsMouseEnter = () => {
+    setHoveringOptions(true);
+  };
+
+  const handleOptionsMouseLeave = () => {
+    setHoveringOptions(false);
+    setShowOptions(null);
+  };
+
   const toggleMenu = () => setMobile(!mobile);
 
-  // Controle da renderização de ServiceOptions para mobile de acordo com o item selecionado no Drawer
-  const [selectedMenuItem, setSelectedMenuItem] = useState(null);
   const handleDrawerItemClick = (item) => {
     if (serviceData[item]) {
       setSelectedMenuItem(item);
@@ -88,10 +119,8 @@ function NavBar() {
     "C6 Conta Global",
     "Ajuda",
     "Blog",
-  ]
+  ];
 
-  //garante com que apenas uma instância de opções de serviço seja exibida de cada vez
-  // const currentMenuItem = menuItems.find(item => typeof item !== "string" && item.name === showOptions);
   const currentMenuItem = menuItems.find(item => item === showOptions);
 
   return (
@@ -154,7 +183,11 @@ function NavBar() {
       </nav>
 
       {currentMenuItem && serviceData[currentMenuItem] && (
-        <div className={styles.optionsContainer}>
+        <div
+          className={styles.optionsContainer}
+          onMouseEnter={handleOptionsMouseEnter}
+          onMouseLeave={handleOptionsMouseLeave}
+        >
           <ServiceOptions
             linkName={currentMenuItem}
             services={serviceData[currentMenuItem]}
@@ -163,7 +196,7 @@ function NavBar() {
         </div>
       )}
 
-<Drawer
+      <Drawer
         anchor="top"
         open={mobile}
         onClose={toggleMenu}
@@ -201,3 +234,5 @@ function NavBar() {
 }
 
 export default NavBar;
+
+//TODO: concertar o bug de exibição do Services Options (mesmo com o mouse sob o Link, o componente some :( )
