@@ -12,11 +12,34 @@
 
 }
 
-
 .content {
     align-items: flex-start;
 }
 
 .GlobalAccLogo {
     padding: 3rem 0;
+}
+
+@media (max-width: 1024px) {
+    .container {
+      padding: 1rem 2.25rem;
+    }
+  
+    .intro h1 {
+      font-size: 3.75rem !important;
+    }
+}
+
+@media (max-width: 748px) {
+    .container {
+      padding: 1rem 1.5rem;
+    }
+
+    .intro h1 {
+        font-size: 3rem !important;
+    }
+
+    .accountBtn {
+        width: 100%;
+    }
 }

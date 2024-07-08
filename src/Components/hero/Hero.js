@@ -30,10 +30,16 @@ function Hero() {
           <Typography variant="body1" gutterBottom>Compras e transferências internacionais e muito mais. Tudo no mesmo app da sua conta no Brasil.</Typography>
         </div>
 
-        <Account />
+        <div className={styles.accountBtn}>
+          <Account />
+        </div>
       </Container>
     </div>
   );
 }
 
 export default Hero;
+
+// TODO: Responsividade mobile e tablet:
+// diminuir a fonte (h1)
+// ajustar as grid e diminuir o padding
