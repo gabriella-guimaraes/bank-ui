@@ -1,0 +1,9 @@
+.container {
+    margin: 3rem 0;
+}
+
+.btn button {
+    width: 250px;
+    border-radius: 15px;
+    margin-right: 20px;
+}
