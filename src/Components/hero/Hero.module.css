@@ -1,0 +1,22 @@
+.container {
+    padding: 1rem 6rem;
+}
+
+.badge {
+    background-color: var(--text-secondary);
+    padding: 3px 12px;
+    border-radius: 7px;
+    margin-right: 10px;
+    border-left: 2px solid var(--secondary);
+    font-weight: 600;
+
+}
+
+
+.content {
+    align-items: flex-start;
+}
+
+.GlobalAccLogo {
+    padding: 3rem 0;
+}
