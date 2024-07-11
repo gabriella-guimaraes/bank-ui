@@ -2,12 +2,15 @@
     max-width: 100%;
     padding: 0;
     max-height: 100%;
+    height: auto;
     object-fit: contain;
     box-sizing: border-box;
+    margin-bottom: 80px;
 }
 
 .container {
     padding: 0 5.5rem;
+    margin-bottom: 50px;
 }
 
 .carrossel{
@@ -37,4 +40,36 @@
 .slideTrack > div {
     flex: 0 0 auto;
     margin-right: 16px; /* Ajuste o espaçamento entre os cards conforme necessário */
+}
+
+.firstCard {
+    margin-left: 5.5rem;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 4.5rem;
+    }
+
+    .firstCard {
+        margin-left: 4.5rem;
+    }
+
+}
+
+@media (max-width: 748px) {
+    .container {
+      padding: 0rem 1.5rem;
+    }
+
+    .firstCard {
+        margin-left: 1.5rem;
+    }
+
+    .promoImg .img {
+        width: auto !important;
+        max-height: 500px;
+        height: 500px;
+        object-fit: cover;
+    }
 }
