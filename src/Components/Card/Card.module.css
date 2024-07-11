@@ -1,0 +1,10 @@
+.icon {
+    padding: 8px;
+    background-color: var(--text-secondary);
+    border-radius: 10px;
+}
+
+.title {
+    margin: 20px 0;
+    font-weight: 500;
+}
