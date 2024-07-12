@@ -34,3 +34,32 @@
     margin-bottom: 10px;
     color: var(--primary);
 }
+
+@media (max-width: 748px) {
+    .container {
+       padding: 1rem 1.5rem;
+    }
+
+    .title {
+        font-size: 3rem !important;
+    }
+
+    .card {
+        border-top: 1px solid var(--primary);
+        border-bottom: 1px solid var(--primary);
+        border-left: 0;
+        border-right: 0;
+        padding: 1.75rem 0;
+        margin: 20px 0;
+    }
+
+    .img {
+        width: 90%;
+        height: auto;
+    }
+
+    .cardWrapper {
+        align-items: center;
+        padding: 0 2rem;
+    }
+}

@@ -19,7 +19,7 @@ function Benefits() {
         className={styles.container}
       >
         <Grid item xs={12} md={12}>
-          <Typography variant="h2" align="center" gutterBottom>
+          <Typography variant="h2" align="center" className={styles.title} gutterBottom>
             Economize até 8% em todos os seus gastos internacionais
           </Typography>
         </Grid>
@@ -41,6 +41,7 @@ function Benefits() {
         direction="row"
         justifyContent="space-evenly"
         alignItems="flex-start"
+        className={styles.cardWrapper}
       >
         <Grid item xs={12} md={3}>
           <div className={styles.cardContent}>
