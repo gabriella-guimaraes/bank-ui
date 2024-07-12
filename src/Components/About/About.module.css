@@ -72,4 +72,8 @@
         height: 500px;
         object-fit: cover;
     }
+
+    .title {
+        font-size: 3rem !important;
+    }
 }

@@ -173,7 +173,7 @@ function About() {
         className={styles.container}
       >
         <Grid item xs={12} sm={10} md={8}>
-          <Typography variant="h2" gutterBottom align="left">
+          <Typography variant="h2" gutterBottom className={styles.title} align="left">
             Por que abrir uma C6 Conta Global?
           </Typography>
         </Grid>
