@@ -35,6 +35,10 @@
     color: var(--primary);
 }
 
+.btn {
+    align-items: center;
+}
+
 @media (max-width: 748px) {
     .container {
        padding: 1rem 1.5rem;
@@ -62,4 +66,10 @@
         align-items: center;
         padding: 0 2rem;
     }
+
+    .btn {
+        padding: 0 1.5rem;
+        width: 100%
+    }
+
 }

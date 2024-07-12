@@ -122,10 +122,14 @@ function Benefits() {
         justifyContent="center"
         alignItems="center"
         className={styles.container}
+        maxWidth="lg"
       >
-        <Grid item xs={12} md={12}>
+        <div className={styles.btn} >
           <Account />
-        </Grid>
+        </div>
+        {/* <div className={styles.mobileBtn}>
+          <Account />
+        </div> */}
       </Grid>
     </div>
   );
