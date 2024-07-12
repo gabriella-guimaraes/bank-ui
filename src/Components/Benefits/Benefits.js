@@ -18,20 +18,20 @@ function Benefits() {
         alignItems="center"
         className={styles.container}
       >
-        <Grid item xs={12} md={12}>
+        <Grid item xs={12} sm={12} md={12}>
           <Typography variant="h2" align="center" className={styles.title} gutterBottom>
             Economize até 8% em todos os seus gastos internacionais
           </Typography>
         </Grid>
 
-        <Grid item xs={12} md={12}>
+        <Grid item xs={12} sm={12} md={12}>
           <Typography variant="body1" gutterBottom>
             Transparência, praticidade e menos tarifas em comparação com o
             cartão de crédito internacional.
           </Typography>
         </Grid>
 
-        <Grid item xs={12} md={12}>
+        <Grid item xs={12} sm={12} md={12}>
           <Image src={cards} className={styles.img} alt="C6 Bank credit cards" />
         </Grid>
       </Grid>
@@ -43,7 +43,7 @@ function Benefits() {
         alignItems="flex-start"
         className={styles.cardWrapper}
       >
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} sm={3} md={3}>
           <div className={styles.cardContent}>
             <LeaderboardOutlinedIcon fontSize="large" className={styles.icon} />
             <Typography variant="h5" gutterBottom>
@@ -56,14 +56,14 @@ function Benefits() {
               justifyContent="space-evenly"
               alignItems="flex-start"
             >
-              <Grid item xs={12} md={12}>
+              <Grid item xs={12} sm={4} md={12}>
                 <Typography variant="body2">
                   IOF: 1,1% (envio) e 0,38% (retorno) <br />
                   Spread:
                 </Typography>
               </Grid>
 
-              <Grid item xs={12} md={12}>
+              <Grid item xs={12} sm={3} md={12}>
                 <>
                   <Typography variant="body2" component="li">
                     0,90% para valores entre 20 e 999,99 (dólar e euro)
@@ -80,7 +80,7 @@ function Benefits() {
           </div>
         </Grid>
 
-        <Grid item xs={12} md={4} className={styles.card}>
+        <Grid item xs={12} sm={4} md={4} className={styles.card}>
           <div className={styles.cardContent}>
             <MoneyOffCsredOutlinedIcon
               fontSize="large"
@@ -105,7 +105,7 @@ function Benefits() {
           </div>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} sm={3} md={3}>
           <div className={styles.cardContent}>
             <AccessTimeOutlinedIcon fontSize="large" className={styles.icon} />
             <Typography variant="h5" gutterBottom>
@@ -127,9 +127,6 @@ function Benefits() {
         <div className={styles.btn} >
           <Account />
         </div>
-        {/* <div className={styles.mobileBtn}>
-          <Account />
-        </div> */}
       </Grid>
     </div>
   );
