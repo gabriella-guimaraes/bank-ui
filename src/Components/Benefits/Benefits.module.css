@@ -1,0 +1,36 @@
+.container {
+    padding: 0 5.5rem;
+    /* align-items: center; */
+}
+
+.img {
+    margin-bottom: 20px;
+}
+
+.card {
+    border-right: 1px solid var(--primary);
+    border-left: 1px solid var(--primary);
+    padding: 0 1.5rem;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--secondary);
+    margin-bottom: 10px;
+}
+
+.benefits {
+    padding: 5rem 0;
+    
+}
+
+.cardContent {
+    padding: 0 2rem;
+    color: var(--primary);
+    /* align-items: center; */
+}
+
+.icon {
+    margin-bottom: 10px;
+    color: var(--primary);
+}
