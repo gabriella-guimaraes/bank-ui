@@ -28,3 +28,29 @@
     margin-bottom: 3.75rem;
     padding: 0 6rem;
 }
+
+@media (max-width: 1050px) {
+    .container {
+        padding: 1rem 1.5rem;
+      }
+    
+      .title {
+        font-size: 3rem !important;
+      }
+}
+
+@media (max-width: 748px) {
+    .container {
+        padding: 1rem 1.5rem;
+    }
+    
+    .title {
+        font-size: 3rem !important;
+        padding: 0 2rem;
+    }
+
+    /* .img {
+        object-fit: contain;
+        width: 80%;
+    } */
+}
