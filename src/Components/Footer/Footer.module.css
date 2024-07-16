@@ -1,0 +1,75 @@
+.container {
+    width: 100%;
+    height: auto;
+    margin-top: 7rem;
+    background-image: url(../../assets/texture.png), radial-gradient(100% 272% at 100% 0%, #0B0B0B 0%, #131313 47.75%, #202020 94.20%);
+}
+
+.links {
+    padding: 5rem 5.5rem;
+}
+
+.btnWrapper {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.btn {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.icons {
+    width: 100%;
+    margin: 0;
+}
+
+.icon {
+    width: 100%;
+}
+
+@media (max-width: 1050px){
+    .links {
+        padding: 5rem 3rem;
+    }
+
+    .content {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 748px) {
+    .links {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .content,
+    .btnWrapper,
+    .icons {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+        order: 1;
+        width: 100%
+    }
+    
+    .content {
+        order: 2;
+    }
+    
+    .iconsWrapper {
+        order: 3;
+    }
+
+    .icons {
+        margin: 0 32px;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
