@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
   Button,
-  ButtonGroup,
   Grid,
   Link,
   Grow,
@@ -14,14 +13,15 @@ import {
   Box,
   IconButton,
 } from "@mui/material";
-import BankIcon from "../icons/logo";
-import MobileMenu from "../icons/mobileMenu";
-import SearchIcon from "../icons/search";
-import menu_icon from "../../assets/menu-icon.png";
+import SearchIcon from "../../icons/search";
+import menu_icon from "../../../assets/menu-icon.png";
 import styles from "./NavBar.module.css";
 import Image from "next/image";
-import ServiceOptions from "../serviceOptions/ServiceOptions";
+import ServiceOptions from "../../atoms/serviceOptions/ServiceOptions";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import Logo from "@/Components/atoms/logo/logo";
+import NavLink from "@/Components/atoms/navLink/navLink";
+import ButtonGroup from "@/Components/molecules/buttonGroup/buttonGroup";
 
 // Estrutura de dados para os links
 const serviceData = {
@@ -88,7 +88,7 @@ function NavBar() {
       if (!hoveringOptions) {
         setShowOptions(null);
       }
-    }, 500); // Pequeno atraso para permitir a transição suave
+    }, 700); // Pequeno atraso para permitir a transição suave
   };
 
   const handleOptionsMouseEnter = () => {
@@ -134,9 +134,7 @@ function NavBar() {
           className={styles.container}
         >
           <Grid item xs={4} md={2}>
-            <div className={styles.logo}>
-              <BankIcon />
-            </div>
+            <Logo />
           </Grid>
 
           <Grid item xs={2} md={7} className={styles.links}>
@@ -147,16 +145,13 @@ function NavBar() {
                 alignItems="center"
               >
                 {menuItems.map((item, index) => (
-                  <Link
+                  <NavLink
                     key={index}
-                    underline="none"
                     href="#"
-                    className={styles.menuItem}
                     onMouseEnter={() => handleMouseEnter(item)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    {item}
-                  </Link>
+                    onMouseLeave={handleMouseLeave} >
+                      {item} 
+                  </NavLink>
                 ))}
               </Grid>
             </div>
@@ -164,19 +159,7 @@ function NavBar() {
 
           <Grid item xs={8} md={3}>
             <Grid container justifyContent="flex-end" alignItems="center">
-              <ButtonGroup size="small" aria-label="Small button group">
-                <Button variant="outlined" className={styles.searchBtn}>
-                  <SearchIcon />
-                </Button>
-                <Button variant="contained" className={styles.account}>Abrir minha conta</Button>
-                <Button
-                  variant="text"
-                  onClick={toggleMenu}
-                  className={styles.menuIcon}
-                >
-                  <Image src={menu_icon} className={styles.menuIcon} alt="mobile menu icon"/>
-                </Button>
-              </ButtonGroup>
+              <ButtonGroup toggleMenu={toggleMenu} />
             </Grid>
           </Grid>
         </Grid>
@@ -196,7 +179,7 @@ function NavBar() {
         </div>
       )}
 
-<Drawer
+      <Drawer
         anchor="top"
         open={mobile}
         onClose={toggleMenu}
