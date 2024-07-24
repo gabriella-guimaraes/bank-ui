@@ -1,0 +1,19 @@
+.menuIcon {
+  display: none;
+  width: 30px;
+  height: auto;
+}
+
+.account {
+  border: 15px;
+}
+
+@media (max-width: 1024px) {
+    .menuIcon {
+        display: block;
+    }
+
+    .searchBtn {
+        display: none;
+    }
+}
