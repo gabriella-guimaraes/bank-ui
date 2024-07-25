@@ -1,12 +1,8 @@
-"use client";
-
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import styles from "./About.module.css";
-import { Grid, Typography, IconButton } from "@mui/material";
+import { Grid } from "@mui/material";
 import Image from "next/image";
-import cover_img from "../../assets/C6-model-1.png";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import cover_img from "../../../assets/C6-model-1.png";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import CurrencyExchangeIcon from "@mui/icons-material/CurrencyExchange";
@@ -20,8 +16,9 @@ import CreditCardOutlinedIcon from "@mui/icons-material/CreditCardOutlined";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined";
 import CoffeeOutlinedIcon from "@mui/icons-material/CoffeeOutlined";
-import CardComponent from "../Card/Card";
-import Account from "../atoms/Account/Account";
+import Account from "../../atoms/Account/Account";
+import Title from "../../atoms/title/title";
+import Carousel from "@/Components/organisms/carousel/Carousel";
 
 const cards = [
   {
@@ -116,44 +113,6 @@ const cards = [
   },
 ];
 function About() {
-  const [index, setIndex] = useState(0);
-  const [transform, setTransform] = useState(0);
-  const [cardsPerView, setCardsPerView] = useState(1);
-  //const sliderRef = useRef(null);
-
-  const updateCardsPerView = () => {
-    const width = window.innerWidth;
-
-    if (width >= 1200) {
-      setCardsPerView(3);
-    } else if (width >= 800) {
-      setCardsPerView(2);
-    } else if (width >= 768) {
-      setCardsPerView(1);
-    } else {
-      setCardsPerView(1);
-    }
-  };
-
-  useEffect(() => {
-    updateCardsPerView();
-    window.addEventListener("resize", updateCardsPerView);
-    return () => window.removeEventListener("resize", updateCardsPerView);
-  }, []);
-
-  const slideForward = () => {
-    if (index < cards.length - cardsPerView) {
-      setIndex(index + 1);
-      setTransform((previousTransform) => previousTransform - 390);
-    }
-  };
-
-  const slideBackward = () => {
-    if (index > 0) {
-      setIndex(index - 1);
-      setTransform((previousTransform) => previousTransform + 390);
-    }
-  };
 
   return (
     <div>
@@ -173,51 +132,12 @@ function About() {
         className={styles.container}
       >
         <Grid item xs={12} sm={10} md={8}>
-          <Typography variant="h2" gutterBottom className={styles.title} align="left">
-            Por que abrir uma C6 Conta Global?
-          </Typography>
-        </Grid>
-        <Grid item xs={12} sm={2} md={2}>
-          <IconButton
-            aria-label="back_btn"
-            className={styles.btn}
-            color="primary"
-            disabled={index === 0}
-            onClick={slideBackward}
-          >
-            <ArrowBackIcon fontSize="large" />
-          </IconButton>
-          <IconButton
-            aria-label="forward_btn"
-            className={styles.btn}
-            color="primary"
-            disabled={index >= cards.length - cardsPerView}
-            onClick={slideForward}
-          >
-            <ArrowForwardIcon fontSize="large" />
-          </IconButton>
+          <Title text="Por que abrir uma C6 Conta Global?" />
         </Grid>
       </Grid>
 
       {/* Carrossel */}
-      <Grid item xs={12}>
-        <div className={styles.slider}>
-          <div
-            className={styles.slideTrack}
-            style={{ transform: `translateX(${transform}px)` }}
-          >
-            {cards.map((card, idx) => (
-              <div key={idx} className={idx === 0 ? styles.firstCard : ""}>
-                <CardComponent
-                  Icon={card.Icon}
-                  title={card.title}
-                  description={card.description}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </Grid>
+      <Carousel cards={cards} />
 
       <Grid
         container

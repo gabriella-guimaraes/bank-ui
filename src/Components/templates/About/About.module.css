@@ -39,7 +39,7 @@
 
 .slideTrack > div {
     flex: 0 0 auto;
-    margin-right: 16px; /* Ajuste o espaçamento entre os cards conforme necessário */
+    margin-right: 16px;
 }
 
 .firstCard {
