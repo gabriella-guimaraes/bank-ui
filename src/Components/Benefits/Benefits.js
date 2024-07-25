@@ -2,7 +2,7 @@ import { Grid, Typography } from "@mui/material";
 import styles from "./Benefits.module.css";
 import cards from "../../assets/credit-cards.png";
 import Image from "next/image";
-import Account from "../Account/Account";
+import Account from "../atoms/Account/Account";
 import LeaderboardOutlinedIcon from "@mui/icons-material/LeaderboardOutlined";
 import MoneyOffCsredOutlinedIcon from "@mui/icons-material/MoneyOffCsredOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";

@@ -23,5 +23,3 @@ function Account() {
 }
 
 export default Account
-
-// TODO: Ajustar a responsividade: Os botões devem ser exibidos em coluna para telas menores

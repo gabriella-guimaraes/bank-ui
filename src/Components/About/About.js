@@ -21,7 +21,7 @@ import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import CompareArrowsOutlinedIcon from "@mui/icons-material/CompareArrowsOutlined";
 import CoffeeOutlinedIcon from "@mui/icons-material/CoffeeOutlined";
 import CardComponent from "../Card/Card";
-import Account from "../Account/Account";
+import Account from "../atoms/Account/Account";
 
 const cards = [
   {
