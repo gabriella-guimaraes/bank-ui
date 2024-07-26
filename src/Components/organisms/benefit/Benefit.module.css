@@ -1,0 +1,12 @@
+@media (max-width: 1050px) {
+    .cardWrapper {
+        align-items: flex-start;
+      }
+}
+
+@media (max-width: 748px) {
+    .cardWrapper {
+        align-items: center;
+        padding: 0 2rem;
+    }
+}
