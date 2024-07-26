@@ -2,14 +2,14 @@ import React from "react";
 import { Typography } from "@mui/material";
 import styles from "./title.module.css";
 
-function Title({text}) {
+function Title({text, align}) {
   return (
     <>
       <Typography
         variant="h2"
         gutterBottom
         className={styles.title}
-        align="left"
+        align={align}
       >
         {text}
       </Typography>
