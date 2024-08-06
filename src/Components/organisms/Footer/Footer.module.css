@@ -2,7 +2,7 @@
     width: 100%;
     height: auto;
     margin-top: 7rem;
-    background-image: url(../../assets/texture.png), radial-gradient(100% 272% at 100% 0%, #0B0B0B 0%, #131313 47.75%, #202020 94.20%);
+    background-image: url(../../../assets/texture.png), radial-gradient(100% 272% at 100% 0%, #0B0B0B 0%, #131313 47.75%, #202020 94.20%);
 }
 
 .links {

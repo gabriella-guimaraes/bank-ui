@@ -4,7 +4,6 @@ import About from "@/Components/templates/About/About";
 import styles from "./page.module.css";
 import Benefits from "@/Components/templates/Benefits/Benefits";
 import Comments from "@/Components/templates/Comments/Comments";
-import Footer from "@/Components/Footer/Footer";
 
 export default function Home() {
   return (
@@ -13,7 +12,6 @@ export default function Home() {
       <About />
       <Benefits />
       <Comments />
-      <Footer />
     </main>
   );
 }
