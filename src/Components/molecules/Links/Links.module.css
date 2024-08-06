@@ -1,0 +1,16 @@
+@media (max-width: 1050px){
+    .links {
+        padding: 5rem 3rem;
+    }
+
+    .content {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 748px){
+    .content {
+        order: 2;
+    }
+}
